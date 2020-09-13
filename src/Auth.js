@@ -7,12 +7,13 @@ import { icons2x } from './components/constants/icons';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const falseValue = false;
   const [currentUser, setCurrentUser] = useState(null);
   const [userName, setUserName] = useState(null);
   const [userFamilyMembers, setUserFamilyMembers] = useState(null);
   const [userGroup, setUserGroup] = useState(1);
   const [userReservations, setUserReservations] = useState([]);
-  const [pending, setPending] = useState(true);
+  const [pending, setPending] = useState(1);
 
   const handleAuthUser = userId => {
     try{
@@ -27,8 +28,8 @@ export const AuthProvider = ({ children }) => {
             setUserName(resp.data.response.firstName);
             setUserFamilyMembers(resp.data.response.familyMembers);
             setUserReservations(resp.data.response.reservations);
-            setUserGroup(resp.data.response.userGroup.id)
-            setPending(false);
+            setUserGroup(resp.data.response.userGroup.id);
+            setPending(falseValue);
           } else {
             app.auth().signOut();
           }
@@ -38,23 +39,22 @@ export const AuthProvider = ({ children }) => {
       console.error(error);
       app.auth().signOut();
       // TO DO: add error handler
-    }
+    };
   };
 
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
-      
-      setCurrentUser(user)
+      setCurrentUser(user);
       if(user && user.uid){
         handleAuthUser(user.uid);
       } else {
-        setPending(false);
+        setPending(falseValue);
       }
     });
   }, []);
 
   if(pending){
-    return <div className="loading-parent"><div className="loading-child text-center"><p>{icons2x.fan}</p>Loading...</div></div>
+    return (<div className="loading-parent"><div className="loading-child text-center"><p>{icons2x.fan}</p>Loading...</div></div>);
   }
 
   return (

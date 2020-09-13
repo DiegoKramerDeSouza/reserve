@@ -22,6 +22,7 @@ class NavBar extends Component {
     SignOutButtons = () => {
         return (
             <form className="form-inline my-2 my-lg-0" align="right">
+                <NavLink className="btn btn-sm btn-outline-info m-1 my-2 my-sm-0" exact to="/profile">Profile</NavLink>
                 <button className="btn btn-sm btn-outline-danger m-1 my-2 my-sm-0" onClick={() => app.auth().signOut()}>Sign out</button>
             </form>
         );
@@ -80,9 +81,6 @@ class NavBar extends Component {
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <NavLink className="nav-link" exact to="/">{icon.home} Home</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" exact to="/profile">{icon.profile} Profile</NavLink>
                         </li>
                         <this.RenderAdminLinks />
                     </ul>
