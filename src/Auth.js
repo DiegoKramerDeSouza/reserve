@@ -7,7 +7,7 @@ import { icons2x } from './components/constants/icons';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  
+
   const [currentUser, setCurrentUser] = useState(null);
   const [userName, setUserName] = useState(null);
   const [userFamilyMembers, setUserFamilyMembers] = useState(null);
@@ -29,7 +29,6 @@ export const AuthProvider = ({ children }) => {
             setUserFamilyMembers(resp.data.response.familyMembers);
             setUserReservations(resp.data.response.reservations);
             setUserGroup(resp.data.response.userGroup.id);
-            setPending("ready");
           } else {
             app.auth().signOut();
           }
@@ -47,6 +46,9 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user);
       if(user && user.uid){
         handleAuthUser(user.uid);
+        setPending("ready");
+      } else {
+        setPending("ready");
       }
     });
   }, []);
