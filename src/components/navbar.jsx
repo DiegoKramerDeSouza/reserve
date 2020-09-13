@@ -28,7 +28,7 @@ class NavBar extends Component {
     }
 
     RenderButtons = () => {
-        const { currentUser, userGroup } = useContext(AuthContext);
+        const { currentUser } = useContext(AuthContext);
         if (currentUser) {
             return (
                 <this.SignOutButtons />

@@ -18,7 +18,6 @@ const HomeComponent = () => {
             const request = {
                 id: currentUser.uid
             };
-            console.log(reservationApi);
             axios.post(reservationApi + "/getReservations",
                 request,
                 { headers: { "Content-Type": "application/json" } }

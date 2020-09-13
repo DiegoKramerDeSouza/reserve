@@ -23,7 +23,7 @@ const App = () => {
     <React.Fragment>
       <AuthProvider>
         <Router>
-          <NavBar total={getTotal()}/>
+          <NavBar />
           <main className="container">
             <div className="m-2">
               <Switch>
