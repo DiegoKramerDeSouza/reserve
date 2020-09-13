@@ -12,8 +12,8 @@ const HomeComponent = () => {
     const [eventsPending, setEventsPending] = useState(-1);
     const [reservationsPending, setReservationsPending] = useState(-1);
     const { currentUser, userName } = useContext(AuthContext);
-    const fetchReservations = () => {
 
+    const fetchReservations = () => {
         try {
             const request = {
                 id: currentUser.uid
@@ -38,11 +38,8 @@ const HomeComponent = () => {
                 setEventsPending(resp && resp.data && resp.data.response ? resp.data.response.length : 0 );
             });
 
-
-
         } catch (error) {
             console.error(error);
-            // TO DO: add error handler
         }
     };
     useEffect(() => fetchReservations(), []);

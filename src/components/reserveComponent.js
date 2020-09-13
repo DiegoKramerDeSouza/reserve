@@ -28,7 +28,6 @@ const ReserveComponent = (props) => {
                 });
             } catch (error) {
                 console.error(error);
-                // TO DO: add error handler
             }
         }
     };

@@ -6,9 +6,6 @@ import { reservationApi } from './constants/endpoints';
 
 const CreateEventComponent = ({ history }) => {
 
-    const dummySeats = [
-        { id: { seatId: "D0" } }
-    ];
     const { currentUser, userGroup } = useContext(AuthContext);
     const [seats, setSeats] = useState([]);
 
@@ -42,7 +39,6 @@ const CreateEventComponent = ({ history }) => {
             }
         } catch (e) {
             console.error(e);
-            // TO DO: add error handler
         }
     };
 

@@ -40,7 +40,6 @@ const SignUpComponent = ({history}) => {
                         });
                     } catch(error){
                         response.user.delete().then(resp => console.error("Unable to save user.", error));
-                        // TO DO: add error handler
                     }
                     
                 }
@@ -48,12 +47,10 @@ const SignUpComponent = ({history}) => {
             
         } catch (error) {
             console.error(error);
-            // TO DO: add error handler
         }
     }, [history]);
 
     const { currentUser } = useContext(AuthContext);
-    console.log(history);
     if (currentUser) {
         return <Redirect to="/" />;
     }

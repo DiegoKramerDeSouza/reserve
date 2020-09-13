@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error(error);
       app.auth().signOut();
-      // TO DO: add error handler
     };
   };
 
@@ -46,7 +45,6 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user);
       if(user && user.uid){
         handleAuthUser(user.uid);
-        setPending("ready");
       } else {
         setPending("ready");
       }
