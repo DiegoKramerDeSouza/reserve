@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import app from '../base.js';
 import { AuthContext } from '../Auth';
 import { icon } from './constants/icons';
-import { faIcons } from '@fortawesome/free-solid-svg-icons';
 
 class NavBar extends Component {
 
