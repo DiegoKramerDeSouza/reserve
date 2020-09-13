@@ -7,13 +7,13 @@ import { icons2x } from './components/constants/icons';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const falseValue = false;
+  
   const [currentUser, setCurrentUser] = useState(null);
   const [userName, setUserName] = useState(null);
   const [userFamilyMembers, setUserFamilyMembers] = useState(null);
   const [userGroup, setUserGroup] = useState(1);
   const [userReservations, setUserReservations] = useState([]);
-  const [pending, setPending] = useState(1);
+  const [pending, setPending] = useState("loading");
 
   const handleAuthUser = userId => {
     try{
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             setUserFamilyMembers(resp.data.response.familyMembers);
             setUserReservations(resp.data.response.reservations);
             setUserGroup(resp.data.response.userGroup.id);
-            setPending(falseValue);
+            setPending("ready");
           } else {
             app.auth().signOut();
           }
@@ -47,13 +47,11 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user);
       if(user && user.uid){
         handleAuthUser(user.uid);
-      } else {
-        setPending(falseValue);
       }
     });
   }, []);
 
-  if(pending){
+  if(pending === "loading"){
     return (<div className="loading-parent"><div className="loading-child text-center"><p>{icons2x.fan}</p>Loading...</div></div>);
   }
 
