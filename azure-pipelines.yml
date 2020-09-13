@@ -25,7 +25,7 @@ steps:
   
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '${uiBuild}'
+    rootFolderOrFile: '$(uiBuild)'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
